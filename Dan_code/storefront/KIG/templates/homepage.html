@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        <!--Customizing HTML Page-->
+        body {
+            font-family: Verdana, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 40px;
+        }
+        h2 {
+            text-align: center;
+            color: white;
+            font-size: 30px;
+        }
+        .container {
+            height: 200px;
+            position: relative;
+        }
+        .container2 {
+            height: 50px;
+            position: relative;
+            background-color: rgb(36, 214, 104);
+        }
+        .container3 {
+            height: 100px;
+            position: relative;
+            background-color: rgb(36, 214, 104);
+        }
+        .container4 {
+            height: 50px;
+            position: relative;
+            background-color: rgb(211, 224, 26);
+        }
+        .container5 {
+            height: 50px;
+            position: relative;
+            background-color: rgb(214, 36, 36);
+        }
+        .center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        .button {
+          background-color: #ffffff;
+          border: none;
+          color: black;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container3">
+        <div class="center">
+           <h1>Welcome Home {{ fname }}</h1>
+        </div>
+    </div>
+    <!--Sign out button-->
+    <form action="/" method="post">
+        {% csrf_token %}
+            <button class="button" type="submit">Signout</button>
+    </form>
+    <br>
+    <!--Add new plant button-->
+    <form action="/homepage" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="fName" name="fName" value="{{ fname }}" />
+            <button class="button" type="submit">Add New Plant</button>
+    </form>
+    <br>
+    <!--Overdue list of plant-->
+    <div class="container5">
+        <div class="center">
+            <h2>Overdue:</h2>
+        </div>
+    </div>
+    <form action="/homepage" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="pName" name="pName" value="{{ over0 }}" />
+        <input type="hidden" id="fName" name="fName" value="{{ fname }}" />
+            <button class="button" type="submit">{{ over0 }}</button>
+    </form>
+    <form action="/homepage" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="pName" name="pName" value="{{ over1 }}" />
+        <input type="hidden" id="fName" name="fName" value="{{ fname }}" />
+            <button class="button" type="submit">{{ over1 }}</button>
+    </form>
+    <form action="/homepage" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="pName" name="pName" value="{{ over2 }}" />
+        <input type="hidden" id="fName" name="fName" value="{{ fname }}" />
+            <button class="button" type="submit">{{ over2 }}</button>
+    </form>
+    <form action="/homepage" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="pName" name="pName" value="{{ over3 }}" />
+        <input type="hidden" id="fName" name="fName" value="{{ fname }}" />
+            <button class="button" type="submit">{{ over3 }}</button>
+    </form>
+    <form action="/homepage" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="pName" name="pName" value="{{ over4 }}" />
+        <input type="hidden" id="fName" name="fName" value="{{ fname }}" />
+            <button class="button" type="submit">{{ over4 }}</button>
+    </form>
+    <br>
+    <!--Water now list of plant-->
+    <div class="container4">
+        <div class="center">
+            <h2>Water Now:</h2>
+        </div>
+    </div>
+    <form action="/homepage" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="pName" name="pName" value="{{ today0 }}" />
+        <input type="hidden" id="fName" name="fName" value="{{ fname }}" />
+            <button class="button" type="submit">{{ today0 }}</button>
+    </form>
+    <form action="/homepage" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="pName" name="pName" value="{{ today1 }}" />
+        <input type="hidden" id="fName" name="fName" value="{{ fname }}" />
+            <button class="button" type="submit">{{ today1 }}</button>
+    </form>
+    <form action="/homepage" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="pName" name="pName" value="{{ today2 }}" />
+        <input type="hidden" id="fName" name="fName" value="{{ fname }}" />
+            <button class="button" type="submit">{{ today2 }}</button>
+    </form>
+    <form action="/homepage" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="pName" name="pName" value="{{ today3 }}" />
+        <input type="hidden" id="fName" name="fName" value="{{ fname }}" />
+            <button class="button" type="submit">{{ today3 }}</button>
+    </form>
+    <form action="/homepage" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="pName" name="pName" value="{{ today4 }}" />
+        <input type="hidden" id="fName" name="fName" value="{{ fname }}" />
+            <button class="button" type="submit">{{ today4 }}</button>
+    </form>
+    <br>
+    <!--Water later list of plant-->
+    <div class="container2">
+        <div class="center">
+            <h2>Water Later:</h2>
+        </div>
+    </div>
+    <form action="/homepage" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="pName" name="pName" value="{{ later0 }}" />
+        <input type="hidden" id="fName" name="fName" value="{{ fname }}" />
+            <button class="button" type="submit">{{ later0 }}</button>
+    </form>
+    <form action="/homepage" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="pName" name="pName" value="{{ later1 }}" />
+        <input type="hidden" id="fName" name="fName" value="{{ fname }}" />
+            <button class="button" type="submit">{{ later1 }}</button>
+    </form>
+    <form action="/homepage" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="pName" name="pName" value="{{ later2 }}" />
+        <input type="hidden" id="fName" name="fName" value="{{ fname }}" />
+            <button class="button" type="submit">{{ later2 }}</button>
+    </form>
+    <form action="/homepage" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="pName" name="pName" value="{{ later3 }}" />
+        <input type="hidden" id="fName" name="fName" value="{{ fname }}" />
+            <button class="button" type="submit">{{ later3 }}</button>
+    </form>
+    <form action="/homepage" method="post">
+        {% csrf_token %}
+        <input type="hidden" id="pName" name="pName" value="{{ later4 }}" />
+        <input type="hidden" id="fName" name="fName" value="{{ fname }}" />
+            <button class="button" type="submit">{{ later4 }}</button>
+    </form>
+</body>
+</html>

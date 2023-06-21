@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        <!--Customizing HTML Page-->
+        body {
+            font-family: Verdana, sans-serif;
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            font-size: 40px;
+        }
+        h3 {
+            text-align: center;
+            color: rgb(36, 214, 104);
+            font-size: 20px;
+        }
+        .container {
+            height: 200px;
+            position: relative;
+        }
+        .container2 {
+            height: 50px;
+            position: relative;
+            background-color: rgb(36, 214, 104);
+        }
+        .container3 {
+            height: 100px;
+            position: relative;
+            background-color: rgb(36, 214, 104);
+        }
+        .center {
+            margin: 0;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+        .button {
+          background-color: rgb(36, 214, 104);
+          border: none;
+          color: white;
+          padding: 15px 32px;
+          text-align: center;
+          text-decoration: none;
+          display: inline-block;
+          font-size: 16px;
+          margin: 4px 2px;
+          cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!--Plant info-->
+    <div class="container3">
+        <div class="center">
+            <h1>{{ pName }}</h1>
+        </div>
+    </div>
+    <h3>Watering Time: {{ wateringTime }} days</h3>
+    <h3>Next Watering Date: {{ wateringDate }}</h3>
+    <div class="container">
+        <div class="center">
+            <form action="/plantinfo" method="post"> <!--Watered plant button-->
+                {% csrf_token %}
+                    <label for="">I have watered this plant:</label>
+                    <input type="hidden" id="pName" name="pName" value="{{ pName }}" />
+                    <input type="hidden" id="iswatered" name="iswatered" value="{{ wateringTime }}">
+                    <input type="hidden" id="fName" name="fName" value="{{ fName }}" />
+                    <button class="button" type="submit">Yes</button>
+            </form>
+        </div>
+    </div>
+
+    <br>
+    <div class="container3">
+        <div class="center">
+            <h1>Edit</h1>
+        </div>
+    </div>
+    <br>
+    <br>
+    <div class="container">
+        <div class="center">
+            <form action="/plantinfo" method="post"> <!--Edit plant button-->
+                {% csrf_token %}
+                    <input type="text" id="newName" name="newName" size="50" placeholder="new name here" Required>
+                    <br>
+                    <br>
+                    <input type="text" id="newTime" name="newTime" size="50" placeholder="new watering time here" Required>
+                    <br>
+                    <br>
+                    <input type="hidden" id="pName" name="pName" value="{{ pName }}" />
+                    <input type="hidden" id="fName" name="fName" value="{{ fName }}" />
+                    <button class="button" type="submit">Edit</button>
+            </form>
+            <br>
+            <br>
+            <form action="/plantinfo" method="post"> <!--Delete plant button-->
+                {% csrf_token %}
+                    <input type="hidden" id="pName" name="pName" value="{{ pName }}" />
+                    <input type="hidden" id="del" name="del" value="del">
+                    <input type="hidden" id="fName" name="fName" value="{{ fName }}" />
+                    <button class="button" type="submit">Delete Plant</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
